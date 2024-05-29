@@ -1,0 +1,42 @@
+.login-container {
+  padding: 16px;
+  background-color: #242424;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: max-content;
+  width: 30%;
+  border-radius: 4px;
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .logo {
+      background: url('../../assets/logo.png') no-repeat;
+      background-size: cover;
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .seperator {
+    height: 2px;
+    width: 30%;
+    background-color: #3f3f3f;
+  }
+
+  .input-field {
+    background-color: #444444;
+    border-radius: 4px;
+
+    .MuiInputBase-root {
+      color: white;
+    }
+  }
+}
