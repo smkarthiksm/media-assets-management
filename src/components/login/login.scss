@@ -39,4 +39,16 @@
       color: white;
     }
   }
+
+  Button {
+    padding: 8px 0;
+    &.Mui-disabled {
+      color: inherit;
+      background-color: #323232;
+    }
+  }
+
+  h6 {
+    text-align: center;
+  }
 }
