@@ -1,19 +1,20 @@
-import { Button, CircularProgress, TextField } from '@mui/material';
+import { Button, CircularProgress, TextField, Typography } from '@mui/material';
 import './login.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  authStateSelector,
   login,
-  selectLogin,
   updateFields,
 } from '../../redux-utilities/slices/auth-slice';
 import { ChangeEvent, useState } from 'react';
 import { emailValidation } from '../utilities/validators';
 import { AppDispatch } from '../../redux-utilities/types';
 import { useNavigate } from 'react-router-dom';
+import LogoComponent from '../logo/logo';
 
-export default function () {
+export default function LoginComponent() {
   const [loginError, setLoginError] = useState(false);
-  const { email, password, isLoaderVisible } = useSelector(selectLogin);
+  const { email, password, isLoaderVisible } = useSelector(authStateSelector);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -44,8 +45,10 @@ export default function () {
     <>
       <div className="login-container">
         <div className="logo-container">
-          <div className="logo"></div>
-          <h4>Media Assets Management</h4>
+          <LogoComponent />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Media Assets Management
+          </Typography>
           <div className="seperator mt-2"></div>
         </div>
         <div>
@@ -84,7 +87,16 @@ export default function () {
             )}
           </Button>
         </div>
-        {loginError && <h6 className="mt-4">Invalid login creds!</h6>}
+        {loginError && (
+          <Typography
+            className="mt-2 text-center"
+            variant="subtitle1"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            Account not found!
+          </Typography>
+        )}
       </div>
     </>
   );

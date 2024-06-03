@@ -21,10 +21,6 @@ const authSlice = createSlice({
       const { prop, value } = action.payload;
       state[prop as 'email' | 'password'] = value;
     },
-
-    setLoaderVisibility: (state, action: PayloadAction<boolean>) => {
-      state.isLoaderVisible = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -55,15 +51,6 @@ export const login = createAsyncThunk(
   },
 );
 
-// export const login = (): AppThunk => async (dispatch, getState) => {
-//   const { email, password } = selectLogin(getState());
-//   dispatch(setLoaderVisibility(true));
-//   const response = await dispatch(loginAsync({ email, password }));
-//   dispatch(setLoaderVisibility(false));
-//   console.log(response);
-//   return response;
-// };
-
-export const selectLogin = (state: RootState) => state.login;
-export const { updateFields, setLoaderVisibility } = authSlice.actions;
+export const authStateSelector = (state: RootState) => state.login;
+export const { updateFields } = authSlice.actions;
 export default authSlice.reducer;
