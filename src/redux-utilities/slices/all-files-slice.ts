@@ -41,6 +41,14 @@ const AllFilesSlice = createSlice({
         artist,
         title,
       };
+      state.cachedAllFiles = state.allFiles;
+    },
+
+    deleteFile: (state: AllFilesState, action: PayloadAction<number>) => {
+      const { payload } = action;
+      const files = state.allFiles.filter((e, index) => index !== payload);
+      state.allFiles = files;
+      state.cachedAllFiles = files;
     },
 
     updateSearchValue: (
@@ -88,7 +96,12 @@ export const fetchAllFiles = () => async (dispatch: AppDispatch) => {
   dispatch(setLoaderVisibility(false));
 };
 
-export const { setAllFiles, setCachedAllFiles, updateSearchValue, updateFile } =
-  AllFilesSlice.actions;
+export const {
+  setAllFiles,
+  setCachedAllFiles,
+  updateSearchValue,
+  updateFile,
+  deleteFile,
+} = AllFilesSlice.actions;
 export const allFilesStateSelector = (state: RootState) => state.allFiles;
 export default AllFilesSlice.reducer;

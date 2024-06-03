@@ -7,20 +7,20 @@ const initialState: EditModalState = {
   album: '',
   artist: '',
   index: -1,
-  isVisible: false,
+  isEditModalVisible: false,
 };
 
 const editModalSlice = createSlice({
   initialState,
   name: 'edit-modal',
   reducers: {
-    setVisibility: (state, action: PayloadAction<boolean>) => {
-      state.isVisible = action.payload;
+    setEditModalVisibility: (state, action: PayloadAction<boolean>) => {
+      state.isEditModalVisible = action.payload;
     },
-    setIndex: (state, action: PayloadAction<number>) => {
+    setEditModalIndex: (state, action: PayloadAction<number>) => {
       state.index = action.payload;
     },
-    updateFields: (
+    updateEditModalFields: (
       state,
       action: PayloadAction<{ prop: string; value?: string }>,
     ) => {
@@ -31,5 +31,9 @@ const editModalSlice = createSlice({
 });
 
 export const editModalStateSelector = (state: RootState) => state.editModal;
-export const { updateFields, setIndex, setVisibility } = editModalSlice.actions;
+export const {
+  updateEditModalFields,
+  setEditModalIndex,
+  setEditModalVisibility,
+} = editModalSlice.actions;
 export default editModalSlice.reducer;

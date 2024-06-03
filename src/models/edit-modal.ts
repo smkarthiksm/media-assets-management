@@ -3,5 +3,5 @@ export interface EditModalState {
   album?: string;
   artist?: string;
   index: number;
-  isVisible: boolean;
+  isEditModalVisible: boolean;
 }

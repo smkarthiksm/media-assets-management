@@ -3,7 +3,7 @@ import ModalComponent from '../modal/modal';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editModalStateSelector,
-  updateFields,
+  updateEditModalFields,
 } from '../../redux-utilities/slices/edit-modal.slice';
 import { AppDispatch } from '../../redux-utilities/types';
 import { ChangeEvent } from 'react';
@@ -11,12 +11,15 @@ import { ChangeEvent } from 'react';
 export default function EditModalComponent(props: {
   open: boolean;
   handleSave: () => void;
+  handleCancel: () => void;
 }) {
   const { album, artist, title } = useSelector(editModalStateSelector);
   const dispatch = useDispatch<AppDispatch>();
 
   function handleFieldUpdate(e: ChangeEvent<HTMLInputElement>) {
-    dispatch(updateFields({ prop: e.target.name, value: e.target.value }));
+    dispatch(
+      updateEditModalFields({ prop: e.target.name, value: e.target.value }),
+    );
   }
   function disableSaveButton() {
     return !album || !artist || !title;

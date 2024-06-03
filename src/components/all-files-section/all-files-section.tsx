@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux-utilities/types';
 import {
   allFilesStateSelector,
+  deleteFile,
   fetchAllFiles,
   searchByInput,
   updateFile,
@@ -33,17 +34,31 @@ import EditModalComponent from '../edit-modal/edit-modal';
 import { AllFile } from '../../stubbs/files';
 import {
   editModalStateSelector,
-  setIndex,
-  setVisibility,
-  updateFields,
+  setEditModalVisibility,
+  updateEditModalFields,
+  setEditModalIndex,
 } from '../../redux-utilities/slices/edit-modal.slice';
+import DeleteModalComponent from '../delete-modal/delete-modal';
+import {
+  deleteModalStateSelector,
+  setDeleteModalIndex,
+  setDeleteModalVisibility,
+} from '../../redux-utilities/slices/delete-modal.slice';
 
 export default function AllSectionComponent() {
   const { allFiles, searchValue } = useSelector(allFilesStateSelector);
   const { isLoaderVisible } = useSelector(loaderStateSelector);
-  const { index, album, artist, title, isVisible } = useSelector(
-    editModalStateSelector,
+  const {
+    index: editIndex,
+    album,
+    artist,
+    title,
+    isEditModalVisible,
+  } = useSelector(editModalStateSelector);
+  const { index: deleteIndex, isDeleteModalVisible } = useSelector(
+    deleteModalStateSelector,
   );
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -51,17 +66,28 @@ export default function AllSectionComponent() {
   }, []);
 
   function handleEditFile(file: AllFile, index: number) {
-    dispatch(updateFields({ prop: 'title', value: file.title }));
-    dispatch(updateFields({ prop: 'album', value: file.album }));
-    dispatch(updateFields({ prop: 'artist', value: file.artist }));
-    dispatch(setIndex(index));
-    dispatch(setVisibility(true));
+    dispatch(updateEditModalFields({ prop: 'title', value: file.title }));
+    dispatch(updateEditModalFields({ prop: 'album', value: file.album }));
+    dispatch(updateEditModalFields({ prop: 'artist', value: file.artist }));
+    dispatch(setEditModalIndex(index));
+    dispatch(setEditModalVisibility(true));
   }
 
   function handleEditFileSave() {
-    dispatch(updateFile({ album, artist, index, title }));
-    dispatch(setVisibility(false));
+    dispatch(updateFile({ album, artist, index: editIndex, title }));
+    dispatch(setEditModalVisibility(false));
   }
+
+  function handleDeleteFile(file: AllFile, index: number) {
+    dispatch(setDeleteModalIndex(index));
+    dispatch(setDeleteModalVisibility(true));
+  }
+
+  function handleDeleteFileSave() {
+    dispatch(deleteFile(deleteIndex));
+    dispatch(setDeleteModalVisibility(false));
+  }
+
   return (
     <>
       {isLoaderVisible ? null : (
@@ -124,7 +150,12 @@ export default function AllSectionComponent() {
                         >
                           <EditIcon fontSize="inherit" />
                         </IconButton>
-                        <IconButton size="small" color="error" className="mx-4">
+                        <IconButton
+                          size="small"
+                          color="error"
+                          className="mx-4"
+                          onClick={() => handleDeleteFile(file, index)}
+                        >
                           <DeleteIcon fontSize="inherit" />
                         </IconButton>
                       </TableCell>
@@ -135,8 +166,17 @@ export default function AllSectionComponent() {
             </TableContainer>
           </Grid>
           <EditModalComponent
-            open={isVisible}
+            open={isEditModalVisible}
             handleSave={handleEditFileSave}
+            handleCancel={() => dispatch(setEditModalVisibility(false))}
+          />
+          <DeleteModalComponent
+            fileName={
+              (allFiles[deleteIndex] && allFiles[deleteIndex].title) || ''
+            }
+            open={isDeleteModalVisible}
+            handleDelete={handleDeleteFileSave}
+            handleCancel={() => dispatch(setDeleteModalVisibility(false))}
           />
         </Grid>
       )}
