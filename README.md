@@ -32,7 +32,7 @@ npm run start // Starts the app
 
 ![Upload file-2](/screenshots/UploadFileValidation.png?raw=true "Upload file-2")
 
-![Added record](/screenshots/NewlyAddedRecord.png?raw=true "Added record")
+![Added record](/screenshots/NewlyAddedRecord.png?raw=true)
 
 
 ## Libraries
