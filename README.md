@@ -19,12 +19,19 @@ npm run start // Starts the app
 ## Screenshots
 
 ![Login](/screenshots/Login.png?raw=true "Login")
+
 ![Files list](/screenshots/List.png?raw=true "Files list")
+
 ![Search](/screenshots/Search.png?raw=true "Search")
+
 ![Edit](/screenshots/Edit.png?raw=true "Edit")
+
 ![Delete](/screenshots/Delete.png?raw=true "Delete")
+
 ![Upload file-1](/screenshots/UploadFile.png?raw=true "Upload file-1")
+
 ![Upload file-2](/screenshots/UploadFileValidation.png?raw=true "Upload file-2")
+
 ![Added record](/screenshots/NewlyAddedRecord.png?raw=true "Added record")
 
 
