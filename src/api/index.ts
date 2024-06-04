@@ -28,7 +28,7 @@ export const getAllFiles = (): Promise<AllFile[]> => {
   return new Promise((res) => {
     setTimeout(() => {
       return res([...mockAudioFiles, ...mockVideoFiles]);
-    }, 100);
+    }, 4000);
   });
 };
 

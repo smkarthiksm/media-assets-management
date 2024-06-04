@@ -5,3 +5,9 @@
 .link-container {
   flex-grow: 1;
 }
+
+.profile-button {
+  &:focus {
+    outline: none;
+  }
+}

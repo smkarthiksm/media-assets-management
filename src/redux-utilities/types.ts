@@ -1,7 +1,7 @@
 import { Action, ThunkAction } from '@reduxjs/toolkit';
-import { reducers, store } from './store';
+import { combinedReducers, store } from './store';
 
-export type RootState = ReturnType<typeof reducers>;
+export type RootState = ReturnType<typeof combinedReducers>;
 export type AppDispatch = typeof store.dispatch;
 
 export type AppThunk<ReturnType = void> = ThunkAction<
