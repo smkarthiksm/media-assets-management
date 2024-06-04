@@ -1,46 +1,62 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Media Assests Management
 
-## Available Scripts
+A simple react application to manage audio and video files
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+To start the app,
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm install // Installs the dependencies
+npm run start // Starts the app
+```
+#### Login creds
+```bash
+  email: simon.nixon@gmail.com
+  password: pMnMjX
+```
+## Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Login](/screenshots/Login.png?raw=true "Login")
+![Files list](/screenshots/List.png?raw=true "Files list")
+![Search](/screenshots/Search.png?raw=true "Search")
+![Edit](/screenshots/Edit.png?raw=true "Edit")
+![Delete](/screenshots/Delete.png?raw=true "Delete")
+![Upload file-1](/screenshots/UploadFile.png?raw=true "Upload file-1")
+![Upload file-2](/screenshots/UploadFileValidation.png?raw=true "Upload file-2")
+![Added record](/screenshots/NewlyAddedRecord.png?raw=true "Added record")
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Libraries
+    Bootstrap, Material UI, Redux
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
+    1. User can login into the app via the login creds provided.
+    2. View the list of audio and video files.
+    3. Edit the metadata of the files.
+    4. Delete a file.
+    5. Search for files.
+    6. Upload new files and can be seen in the files list.
+    7. Refresh the page to reset to the default mock data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Limitations
+To make the development time faster, following assumptions were made
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    1. Authentication/Authorization isn't integrated with a backend. However I've seeded
+     a login creds in the codebase for testing.
+    2. API responses are mocked.
+    3. SetTimeout is used to mimic API calls and it returns promises. So will be replaced
+     with the actual api call if needed.
+    4. An audio and video file are added in the codebase for testing upload of files. 
+        You can upload your own files as well. Supported formats
+     include(.mp3,.aac,.wav,.mp4,.mov,.avi)
+    5. Audio and video player are not available for now and can be built as an extension.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT](https://choosealicense.com/licenses/mit/)

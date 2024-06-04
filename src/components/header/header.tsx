@@ -1,7 +1,6 @@
 import {
   AppBar,
   Avatar,
-  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -36,7 +35,7 @@ export default function HeaderComponent() {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar className="d-flex justify-content-between">
           <div className="logo-container">
             <LogoComponent />
@@ -56,7 +55,7 @@ export default function HeaderComponent() {
                 Video
               </Link> */}
             </div>
-            <IconButton onClick={handleClick} className='profile-button'>
+            <IconButton onClick={handleClick} className="profile-button">
               <Avatar
                 alt="Simon Nixon"
                 src={require('../../assets/profile-image.png')}
