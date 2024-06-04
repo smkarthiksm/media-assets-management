@@ -1,3 +1,4 @@
+import './all-files-section.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux-utilities/types';
@@ -6,6 +7,7 @@ import {
   deleteFile,
   fetchAllFiles,
   searchByInput,
+  updateAllFiles,
   updateFile,
 } from '../../redux-utilities/slices/all-files-slice';
 import { loaderStateSelector } from '../../redux-utilities/slices/loader-slice';
@@ -28,22 +30,26 @@ import AudioFileIcon from '@mui/icons-material/AudioFile';
 import VideoFileIcon from '@mui/icons-material/VideoFile';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
-import './all-files-section.scss';
-import EditModalComponent from '../edit-modal/edit-modal';
+import EditFileModalComponent from '../edit-file-modal/edit-file-modal';
 import { AllFile } from '../../stubbs/files';
 import {
-  editModalStateSelector,
-  setEditModalVisibility,
-  updateEditModalFields,
-  setEditModalIndex,
-} from '../../redux-utilities/slices/edit-modal.slice';
-import DeleteModalComponent from '../delete-modal/delete-modal';
+  editFileModalStateSelector,
+  setEditFileModalVisibility,
+  updateEditFileModalFields,
+  setEditFileModalIndex,
+} from '../../redux-utilities/slices/edit-file-modal.slice';
+import DeleteFileModalComponent from '../delete-file-modal/delete-file-modal';
 import {
-  deleteModalStateSelector,
-  setDeleteModalIndex,
-  setDeleteModalVisibility,
-} from '../../redux-utilities/slices/delete-modal.slice';
+  deleteFileModalStateSelector,
+  setDeleteFileModalIndex,
+  setDeleteFileModalVisibility,
+} from '../../redux-utilities/slices/delete-file-modal.slice';
+import UploadFileModalComponent from '../upload-file-modal/upload-file-modal';
+import {
+  setUploadFileModalVisibility,
+  uploadFileModalStateSelector,
+} from '../../redux-utilities/slices/upload-file-modal.slice';
+import { fileUploadStepperStateSelector, resetFileUploadStepper } from '../../redux-utilities/slices/file-upload-stepper-slice';
 
 export default function AllSectionComponent() {
   const { allFiles, searchValue } = useSelector(allFilesStateSelector);
@@ -53,12 +59,16 @@ export default function AllSectionComponent() {
     album,
     artist,
     title,
-    isEditModalVisible,
-  } = useSelector(editModalStateSelector);
-  const { index: deleteIndex, isDeleteModalVisible } = useSelector(
-    deleteModalStateSelector,
+    isEditFileModalVisible,
+  } = useSelector(editFileModalStateSelector);
+  const { index: deleteIndex, isDeleteFileModalVisible } = useSelector(
+    deleteFileModalStateSelector,
+  );
+  const { isUploadFileModalVisible } = useSelector(
+    uploadFileModalStateSelector,
   );
 
+  const { files } = useSelector(fileUploadStepperStateSelector);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -66,26 +76,31 @@ export default function AllSectionComponent() {
   }, []);
 
   function handleEditFile(file: AllFile, index: number) {
-    dispatch(updateEditModalFields({ prop: 'title', value: file.title }));
-    dispatch(updateEditModalFields({ prop: 'album', value: file.album }));
-    dispatch(updateEditModalFields({ prop: 'artist', value: file.artist }));
-    dispatch(setEditModalIndex(index));
-    dispatch(setEditModalVisibility(true));
+    dispatch(updateEditFileModalFields({ prop: 'title', value: file.title }));
+    dispatch(updateEditFileModalFields({ prop: 'album', value: file.album }));
+    dispatch(updateEditFileModalFields({ prop: 'artist', value: file.artist }));
+    dispatch(setEditFileModalIndex(index));
+    dispatch(setEditFileModalVisibility(true));
   }
 
   function handleEditFileSave() {
     dispatch(updateFile({ album, artist, index: editIndex, title }));
-    dispatch(setEditModalVisibility(false));
+    dispatch(setEditFileModalVisibility(false));
   }
 
   function handleDeleteFile(file: AllFile, index: number) {
-    dispatch(setDeleteModalIndex(index));
-    dispatch(setDeleteModalVisibility(true));
+    dispatch(setDeleteFileModalIndex(index));
+    dispatch(setDeleteFileModalVisibility(true));
   }
 
   function handleDeleteFileSave() {
     dispatch(deleteFile(deleteIndex));
-    dispatch(setDeleteModalVisibility(false));
+    dispatch(setDeleteFileModalVisibility(false));
+  }
+
+  function handleFileUpload() {
+    dispatch(updateAllFiles(files));
+    dispatch(setUploadFileModalVisibility(false));
   }
 
   return (
@@ -108,7 +123,14 @@ export default function AllSectionComponent() {
               />
             </Grid>
             <Grid item xs={4} textAlign={'right'}>
-              <Button variant="contained" endIcon={<AddIcon />}>
+              <Button
+                variant="contained"
+                endIcon={<AddIcon />}
+                onClick={() => {
+                  dispatch(resetFileUploadStepper());
+                  dispatch(setUploadFileModalVisibility(true));
+                }}
+              >
                 Upload
               </Button>
             </Grid>
@@ -161,22 +183,32 @@ export default function AllSectionComponent() {
                       </TableCell>
                     </TableRow>
                   ))}
+                  {!allFiles.length ? (
+                    <TableRow>
+                      <TableCell colSpan={7} align='center'>No records found</TableCell>
+                    </TableRow>
+                  ) : null}
                 </TableBody>
               </Table>
             </TableContainer>
           </Grid>
-          <EditModalComponent
-            open={isEditModalVisible}
-            handleSave={handleEditFileSave}
-            handleCancel={() => dispatch(setEditModalVisibility(false))}
+          <UploadFileModalComponent
+            open={isUploadFileModalVisible}
+            handleUpload={handleFileUpload}
+            handleCancel={() => dispatch(setUploadFileModalVisibility(false))}
           />
-          <DeleteModalComponent
+          <EditFileModalComponent
+            open={isEditFileModalVisible}
+            handleSave={handleEditFileSave}
+            handleCancel={() => dispatch(setEditFileModalVisibility(false))}
+          />
+          <DeleteFileModalComponent
             fileName={
               (allFiles[deleteIndex] && allFiles[deleteIndex].title) || ''
             }
-            open={isDeleteModalVisible}
+            open={isDeleteFileModalVisible}
             handleDelete={handleDeleteFileSave}
-            handleCancel={() => dispatch(setDeleteModalVisibility(false))}
+            handleCancel={() => dispatch(setDeleteFileModalVisibility(false))}
           />
         </Grid>
       )}

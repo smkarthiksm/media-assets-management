@@ -3,9 +3,7 @@ import LoginComponent from '../components/login/login';
 import HomeComponent from '../components/home/home';
 import PrivateRoute from './PrivateRoute';
 import { isAuthenticated } from '../components/utilities/utility';
-import AudioSectionComponent from '../components/audio-section/audio-section';
 import AllFilesSectionComponent from '../components/all-files-section/all-files-section';
-import VideoSectionComponent from '../components/video-section/video-section';
 
 export const router = createBrowserRouter([
   {
@@ -24,14 +22,6 @@ export const router = createBrowserRouter([
           {
             path: '',
             element: <AllFilesSectionComponent />,
-          },
-          {
-            path: 'audio',
-            element: <AudioSectionComponent />,
-          },
-          {
-            path: 'video',
-            element: <VideoSectionComponent />,
           },
         ],
       },

@@ -1,4 +1,5 @@
 import {
+  Breakpoint,
   Button,
   Dialog,
   DialogActions,
@@ -16,6 +17,7 @@ export default function ModalComponent(props: {
   handleCancel: () => void;
   children: ReactNode;
   disableCloseButton?: boolean;
+  size: Breakpoint;
 }) {
   const handleClose: DialogProps['onClose'] = (event, reason) => {
     if (reason && reason === 'backdropClick') return;
@@ -23,7 +25,12 @@ export default function ModalComponent(props: {
   };
 
   return (
-    <Dialog open={props.open} onClose={handleClose}>
+    <Dialog
+      open={props.open}
+      onClose={handleClose}
+      fullWidth
+      maxWidth={props.size}
+    >
       <DialogTitle>{props.modalTitle}</DialogTitle>
       <DialogContent>{props.children}</DialogContent>
       <DialogActions>

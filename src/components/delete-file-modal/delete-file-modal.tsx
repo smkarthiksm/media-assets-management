@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import ModalComponent from '../modal/modal';
 
-export default function DeleteModalComponent(props: {
+export default function DeleteFileModalComponent(props: {
   fileName?: string;
   open: boolean;
   handleDelete: () => void;
@@ -12,6 +12,7 @@ export default function DeleteModalComponent(props: {
       modalTitle="Delete file"
       closeButtonTitle="Delete"
       handleClose={props.handleDelete}
+      size='sm'
       {...props}
     >
       <Typography variant="body1">

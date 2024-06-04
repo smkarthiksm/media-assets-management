@@ -17,12 +17,14 @@ export default function HeaderComponent() {
               <Link className="text-white m-4" to="">
                 All
               </Link>
+              {/* 
+              // Will be implemented later
               <Link className="text-white m-4" to="audio">
                 Audio
               </Link>
               <Link className="text-white m-4" to="video">
                 Video
-              </Link>
+              </Link> */}
             </div>
             <Avatar
               alt="Simon Nixon"

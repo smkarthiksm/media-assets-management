@@ -2,17 +2,23 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices/auth-slice';
 import loaderReducer from './slices/loader-slice';
 import allFilesReducer from './slices/all-files-slice';
-import editModalReducer from './slices/edit-modal.slice';
-import deleteModalReducer from './slices/delete-modal.slice';
+import editFileModalReducer from './slices/edit-file-modal.slice';
+import deleteFileModalReducer from './slices/delete-file-modal.slice';
+import uploadFileModalReducer from './slices/upload-file-modal.slice';
+import fileUploadStepperReducer from './slices/file-upload-stepper-slice';
 
 export const reducers = combineReducers({
   login: authReducer,
   loader: loaderReducer,
   allFiles: allFilesReducer,
-  editModal: editModalReducer,
-  deleteModal: deleteModalReducer,
+  editFileModal: editFileModalReducer,
+  deleteFileModal: deleteFileModalReducer,
+  uploadFileModal: uploadFileModalReducer,
+  fileUploadStepper: fileUploadStepperReducer,
 });
 
 export const store = configureStore({
   reducer: reducers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });

@@ -23,6 +23,11 @@ const AllFilesSlice = createSlice({
       state.cachedAllFiles = action.payload;
     },
 
+    updateAllFiles: (state: AllFilesState, action) => {
+      state.allFiles = [...state.allFiles, ...action.payload];
+      state.cachedAllFiles = [...state.cachedAllFiles, ...action.payload];
+    },
+
     updateFile: (
       state: AllFilesState,
       action: PayloadAction<{
@@ -102,6 +107,7 @@ export const {
   updateSearchValue,
   updateFile,
   deleteFile,
+  updateAllFiles
 } = AllFilesSlice.actions;
 export const allFilesStateSelector = (state: RootState) => state.allFiles;
 export default AllFilesSlice.reducer;

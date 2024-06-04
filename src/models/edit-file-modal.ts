@@ -1,7 +1,7 @@
-export interface EditModalState {
+export interface EditFileModalState {
   title?: string;
   album?: string;
   artist?: string;
   index: number;
-  isEditModalVisible: boolean;
+  isEditFileModalVisible: boolean;
 }

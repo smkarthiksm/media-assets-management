@@ -1,0 +1,15 @@
+.upload-file-container {
+  border: 1px dashed rgb(198, 198, 198);
+  padding: 4rem;
+  border-radius: .3125rem;
+  .file-input {
+    width: 35%;
+    color: transparent;
+  }
+}
+
+.file-details-container {
+  .file-details {
+    padding: 1rem;
+  }
+}
