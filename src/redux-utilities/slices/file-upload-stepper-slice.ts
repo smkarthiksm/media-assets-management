@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../types';
 import { FileUploadStepperState } from '../../models/file-upload-stepper';
-import { AudioFile } from '../../stubbs/files';
+import { AudioFile } from '../../stubs/files';
 
 const initialState: FileUploadStepperState = {
   activeStep: 0,

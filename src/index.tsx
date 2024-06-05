@@ -3,13 +3,13 @@ import './index.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router/route';
 import { Provider } from 'react-redux';
-import { store } from './redux-utilities/store';
+import { appStore } from './redux-utilities/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <Provider store={store}>
+  <Provider store={appStore()}>
     <RouterProvider router={router} />
   </Provider>,
 );

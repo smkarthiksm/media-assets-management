@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from '../types';
 import { AllFilesState } from '../../models/all-files';
 import { getAllFiles } from '../../api';
-import { AllFile } from '../../stubbs/files';
+import { AllFile } from '../../stubs/files';
 import { setLoaderVisibility } from './loader-slice';
 
 const initialState: AllFilesState = {

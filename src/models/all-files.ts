@@ -1,4 +1,4 @@
-import { AllFile } from '../stubbs/files';
+import { AllFile } from '../stubs/files';
 
 export interface AllFilesState {
   allFiles: AllFile[];

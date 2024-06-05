@@ -10,6 +10,7 @@ import editFileModalReducer from './slices/edit-file-modal.slice';
 import deleteFileModalReducer from './slices/delete-file-modal.slice';
 import uploadFileModalReducer from './slices/upload-file-modal.slice';
 import fileUploadStepperReducer from './slices/file-upload-stepper-slice';
+import { RootState } from './types';
 
 export const combinedReducers = combineReducers({
   login: authReducer,
@@ -29,8 +30,11 @@ const rootReducer = (state: any, action: UnknownAction) => {
   return combinedReducers(state, action);
 };
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
-});
+export const appStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
+    preloadedState,
+  });
+};

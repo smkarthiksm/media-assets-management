@@ -5,8 +5,8 @@ import {
   VideoFile,
   mockAudioFiles,
   mockVideoFiles,
-} from '../stubbs/files';
-import { loginCreds } from '../stubbs/login-stub';
+} from '../stubs/files';
+import { loginCreds } from '../stubs/login-stub';
 
 export const getSession = (e: string, p: string): Promise<boolean> => {
   const isUserExist = loginCreds.some(

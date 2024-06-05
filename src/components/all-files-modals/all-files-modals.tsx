@@ -42,6 +42,11 @@ export default function AllFilesModalsComponent() {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  function handleFileUpload() {
+    dispatch(updateAllFiles(files));
+    dispatch(setUploadFileModalVisibility(false));
+  }
+
   function handleEditFileSave() {
     dispatch(updateFile({ album, artist, index: editIndex, title }));
     dispatch(setEditFileModalVisibility(false));
@@ -49,11 +54,6 @@ export default function AllFilesModalsComponent() {
   function handleDeleteFileSave() {
     dispatch(deleteFile(deleteIndex));
     dispatch(setDeleteFileModalVisibility(false));
-  }
-
-  function handleFileUpload() {
-    dispatch(updateAllFiles(files));
-    dispatch(setUploadFileModalVisibility(false));
   }
 
   return (

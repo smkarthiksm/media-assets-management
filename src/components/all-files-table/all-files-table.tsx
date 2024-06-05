@@ -15,7 +15,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import { allFilesStateSelector } from '../../redux-utilities/slices/all-files-slice';
 import { AppDispatch } from '../../redux-utilities/types';
-import { AllFile } from '../../stubbs/files';
+import { AllFile } from '../../stubs/files';
 import {
   setEditFileModalIndex,
   setEditFileModalVisibility,
