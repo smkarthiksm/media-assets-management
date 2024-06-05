@@ -10,7 +10,7 @@ import LogoComponent from '../logo/logo';
 import './header.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { removeJwtToken } from '../utilities/utility';
+import { removeJwtToken } from '../../utilities/utility';
 import { useDispatch } from 'react-redux';
 
 export default function HeaderComponent() {

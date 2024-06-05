@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import LoginComponent from '../components/login/login';
 import HomeComponent from '../components/home/home';
 import PrivateRoute from './PrivateRoute';
-import { isAuthenticated } from '../components/utilities/utility';
+import { isAuthenticated } from '../utilities/utility';
 import AllFilesSectionComponent from '../components/all-files-section/all-files-section';
 
 export const router = createBrowserRouter([

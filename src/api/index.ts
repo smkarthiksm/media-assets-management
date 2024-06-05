@@ -1,4 +1,4 @@
-import { sampleJwtToken, setJwtToken } from '../components/utilities/utility';
+import { sampleJwtToken, setJwtToken } from '../utilities/utility';
 import {
   AllFile,
   AudioFile,

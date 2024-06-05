@@ -21,6 +21,7 @@ export const combinedReducers = combineReducers({
   fileUploadStepper: fileUploadStepperReducer,
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const rootReducer = (state: any, action: UnknownAction) => {
   if (action.type === 'logout') {
     return combinedReducers({}, action);

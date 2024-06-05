@@ -1,4 +1,4 @@
-import { AudioFile } from '../../stubbs/files';
+import { AudioFile } from "../stubbs/files";
 
 export const setJwtToken = (token: string) => {
   localStorage.setItem('jwt', token);

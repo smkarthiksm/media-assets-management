@@ -26,7 +26,7 @@ import {
   getDurationInFormat,
   getFileTypeFromFile,
   transformFiles,
-} from '../utilities/utility';
+} from '../../utilities/utility';
 
 export default function FileUploadStepperComponent() {
   const { activeStep, files } = useSelector(fileUploadStepperStateSelector);

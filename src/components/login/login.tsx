@@ -7,7 +7,7 @@ import {
   updateFields,
 } from '../../redux-utilities/slices/auth-slice';
 import { ChangeEvent, useState } from 'react';
-import { emailValidation } from '../utilities/validators';
+import { emailValidation } from '../../utilities/validators';
 import { AppDispatch } from '../../redux-utilities/types';
 import { useNavigate } from 'react-router-dom';
 import LogoComponent from '../logo/logo';
