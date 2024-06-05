@@ -35,4 +35,8 @@ export const router = createBrowserRouter([
       <Navigate to="/home" replace />
     ),
   },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />
+  }
 ]);
