@@ -38,12 +38,11 @@ export const areFilesInValid = (files: Partial<AudioFile>[]) =>
   !files.length ||
   files.some((file) => !file.album || !file.artist || !file.title);
 
-export const transformFiles = (files: File[]) => {
-  return files.map((file) => ({
+export const transformFiles = (files: File[]) => files.map((file) => ({
     title: getTitleFromFile(file),
     album: '',
     artist: '',
     duration: '',
     fileType: getFileTypeFromFile(file),
   }));
-};
+;

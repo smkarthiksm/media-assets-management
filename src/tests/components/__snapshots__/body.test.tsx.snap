@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllFilesHeaderComponent should render 1`] = `
+<div>
+  <div
+    class="body-container h-100"
+  />
+</div>
+`;
+
+exports[`BodyComponent should render 1`] = `
+<div>
+  <div
+    class="body-container h-100"
+  />
+</div>
+`;

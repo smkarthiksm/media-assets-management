@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
-import AllFilesHeaderComponent from '../components/all-files-header/all-files-header';
-import { renderWithProviders } from './test-utility';
+import AllFilesHeaderComponent from '../../components/all-files-header/all-files-header';
+import { renderWithProviders } from '../test-utility';
 import { fireEvent, screen } from '@testing-library/react';
 
 describe('AllFilesHeaderComponent', () => {
-  test('should load component with default values', async () => {
+  test('should render', () => {
     const { container } = renderWithProviders(<AllFilesHeaderComponent />);
     expect(container).toMatchSnapshot();
   });

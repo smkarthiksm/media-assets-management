@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploadStepperComponent should render 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container css-s5hy0i-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+    >
+      <div
+        class="MuiStepper-root MuiStepper-horizontal css-m5vj9m-MuiStepper-root"
+      >
+        <div
+          class="MuiStep-root MuiStep-horizontal css-1bw0nnu-MuiStep-root"
+        >
+          <span
+            class="MuiStepLabel-root MuiStepLabel-horizontal css-ascpo7-MuiStepLabel-root"
+          >
+            <span
+              class="MuiStepLabel-iconContainer Mui-active css-vnkopk-MuiStepLabel-iconContainer"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiStepIcon-root Mui-active css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  class="MuiStepIcon-text css-117w1su-MuiStepIcon-text"
+                  dominant-baseline="central"
+                  text-anchor="middle"
+                  x="12"
+                  y="12"
+                >
+                  1
+                </text>
+              </svg>
+            </span>
+            <span
+              class="MuiStepLabel-labelContainer css-1vyamtt-MuiStepLabel-labelContainer"
+            >
+              <span
+                class="MuiStepLabel-label Mui-active css-1hv8oq8-MuiStepLabel-label"
+              >
+                Upload
+              </span>
+            </span>
+          </span>
+        </div>
+        <div
+          class="MuiStepConnector-root MuiStepConnector-horizontal Mui-disabled css-j5w0w9-MuiStepConnector-root"
+        >
+          <span
+            class="MuiStepConnector-line MuiStepConnector-lineHorizontal css-z7uhs0-MuiStepConnector-line"
+          />
+        </div>
+        <div
+          class="MuiStep-root MuiStep-horizontal css-1bw0nnu-MuiStep-root"
+        >
+          <span
+            class="MuiStepLabel-root MuiStepLabel-horizontal Mui-disabled css-ascpo7-MuiStepLabel-root"
+          >
+            <span
+              class="MuiStepLabel-iconContainer Mui-disabled css-vnkopk-MuiStepLabel-iconContainer"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiStepIcon-root css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="12"
+                />
+                <text
+                  class="MuiStepIcon-text css-117w1su-MuiStepIcon-text"
+                  dominant-baseline="central"
+                  text-anchor="middle"
+                  x="12"
+                  y="12"
+                >
+                  2
+                </text>
+              </svg>
+            </span>
+            <span
+              class="MuiStepLabel-labelContainer css-1vyamtt-MuiStepLabel-labelContainer"
+            >
+              <span
+                class="MuiStepLabel-label Mui-disabled css-1hv8oq8-MuiStepLabel-label"
+              >
+                Verify data and save
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-item css-1mkcasw-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-direction-xs-column MuiGrid-grid-xs-12 upload-file-container css-1sd55v0-MuiGrid-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item css-lptiby-MuiGrid-root"
+        >
+          <input
+            accept=".mp3,.aac,.wav,.mp4,.mov,.avi"
+            class="file-input"
+            id="file"
+            multiple=""
+            title=" "
+            type="file"
+          />
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+          >
+            Accepted formats - .mp3,.aac,.wav,.mp4,.mov,.avi
+          </h6>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        0
+         files selected
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-item css-9pwih8-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

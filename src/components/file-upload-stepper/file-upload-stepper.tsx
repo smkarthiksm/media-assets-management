@@ -27,34 +27,45 @@ import {
   getFileTypeFromFile,
   transformFiles,
 } from '../../utilities/utility';
+import { isFunction, isObject } from 'lodash';
 
 export default function FileUploadStepperComponent() {
   const { activeStep, files } = useSelector(fileUploadStepperStateSelector);
   const dispatch = useDispatch<AppDispatch>();
 
-  function handleFileOnChange({
-    target: { files: uploadedFiles },
-  }: ChangeEvent<HTMLInputElement>) {
-    if (uploadedFiles) {
-      const uploadedFilesValues = Object.values(uploadedFiles);
-      const transformedFiles = transformFiles(uploadedFilesValues);
-      uploadedFilesValues.forEach((uploadedFile, index) => {
-        const fileType = getFileTypeFromFile(uploadedFile);
-        const temporarilyCreatedElement = document.createElement(fileType);
-        temporarilyCreatedElement.src = URL.createObjectURL(uploadedFile);
-        temporarilyCreatedElement.addEventListener(
-          'loadedmetadata',
-          function () {
-            transformedFiles[index].duration = getDurationInFormat(
-              temporarilyCreatedElement.duration,
-            );
-            if (index === uploadedFilesValues.length - 1) {
-              dispatch(addFiles(transformedFiles));
-            }
-          },
-        );
-      });
-    }
+  function createAudioDOMElementAndSetFiles(
+    uploadedFile: File,
+    index: number,
+    uploadedFilesValues: File[],
+  ) {
+    const fileType = getFileTypeFromFile(uploadedFile);
+    const transformedFiles = transformFiles(uploadedFilesValues);
+    const temporarilyCreatedElement = document.createElement(fileType);
+    temporarilyCreatedElement.src = URL.createObjectURL(uploadedFile);
+    // wait for file to load metadata to calculate file duration
+    temporarilyCreatedElement.addEventListener('loadedmetadata', function () {
+      transformedFiles[index].duration = getDurationInFormat(
+        temporarilyCreatedElement.duration,
+      );
+
+      // Dispatch action after processing all files selected to upload in the file uploader
+      if (index === uploadedFilesValues.length - 1) {
+        dispatch(addFiles(transformedFiles));
+      }
+    });
+  }
+
+  function handleFileOnChange(uploadedFiles: FileList) {
+    const uploadedFilesValues = Object.values(uploadedFiles).filter(
+      (uploadedFile) => isObject(uploadedFile) && !isFunction(uploadedFile),
+    );
+    uploadedFilesValues.forEach((uploadedFile, index) => {
+      createAudioDOMElementAndSetFiles(
+        uploadedFile,
+        index,
+        uploadedFilesValues,
+      );
+    });
   }
 
   function handleFieldChange(index: number, prop: string, value: string) {
@@ -104,7 +115,9 @@ export default function FileUploadStepperComponent() {
                 id="file"
                 type="file"
                 accept=".mp3,.aac,.wav,.mp4,.mov,.avi"
-                onChange={handleFileOnChange}
+                onChange={({ target: { files: fileList } }) =>
+                  handleFileOnChange(fileList as FileList)
+                }
               />
             </Grid>
             <Grid item>

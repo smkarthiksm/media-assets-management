@@ -27,6 +27,8 @@ import {
 } from '../../redux-utilities/slices/delete-file-modal.slice';
 
 export default function AllFilesTableComponent() {
+  const { allFiles } = useSelector(allFilesStateSelector);
+
   const dispatch = useDispatch<AppDispatch>();
 
   function handleEditFile(file: AllFile, index: number) {
@@ -41,7 +43,6 @@ export default function AllFilesTableComponent() {
     dispatch(setDeleteFileModalVisibility(true));
   }
 
-  const { allFiles } = useSelector(allFilesStateSelector);
   return (
     <TableContainer component={Paper}>
       <Table>

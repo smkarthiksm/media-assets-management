@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AllFilesModalsComponent should render 1`] = `<div />`;
+
 exports[`AllFilesModalsComponent should render all modals 1`] = `<div />`;

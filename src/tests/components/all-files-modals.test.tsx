@@ -1,17 +1,17 @@
 import '@testing-library/jest-dom';
-import { renderWithProviders } from './test-utility';
+import { renderWithProviders } from '../test-utility';
 import { fireEvent, screen } from '@testing-library/react';
-import AllFilesModalsComponent from '../components/all-files-modals/all-files-modals';
-import { allFilesStateStub } from './stubs/all-files-state.stub';
+import AllFilesModalsComponent from '../../components/all-files-modals/all-files-modals';
+import { allFilesStateStub } from '../stubs/all-files-state.stub';
 
 describe('AllFilesModalsComponent', () => {
-  test('should render all modals', () => {
+  test('should render', () => {
     const { container } = renderWithProviders(<AllFilesModalsComponent />);
     expect(container).toMatchSnapshot();
   });
 
   describe('UploadFilesModalComponent', () => {
-    test('should hide the modal on clicking cancel', async () => {
+    test('should hide the modal on clicking cancel', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           uploadFileModal: { isUploadFileModalVisible: true },
@@ -29,7 +29,7 @@ describe('AllFilesModalsComponent', () => {
       ).toBeFalsy();
     });
 
-    test('should add the files on clicking upload', async () => {
+    test('should add the files on clicking upload', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           allFiles: allFilesStateStub,
@@ -51,14 +51,14 @@ describe('AllFilesModalsComponent', () => {
       const uploadButton = screen.getByRole('button', {
         name: 'Upload',
       });
-      expect(store.getState().allFiles.allFiles.length).toEqual(2);
-      expect(store.getState().allFiles.cachedAllFiles.length).toEqual(2);
+      expect(store.getState().allFiles.allFiles).toHaveLength(2);
+      expect(store.getState().allFiles.cachedAllFiles).toHaveLength(2);
       expect(
         store.getState().uploadFileModal.isUploadFileModalVisible,
       ).toBeTruthy();
       fireEvent.click(uploadButton);
-      expect(store.getState().allFiles.allFiles.length).toEqual(3);
-      expect(store.getState().allFiles.cachedAllFiles.length).toEqual(3);
+      expect(store.getState().allFiles.allFiles).toHaveLength(3);
+      expect(store.getState().allFiles.cachedAllFiles).toHaveLength(3);
       expect(
         store.getState().uploadFileModal.isUploadFileModalVisible,
       ).toBeFalsy();
@@ -66,7 +66,7 @@ describe('AllFilesModalsComponent', () => {
   });
 
   describe('EditFilesModalComponent', () => {
-    test('should hide the modal on clicking cancel', async () => {
+    test('should hide the modal on clicking cancel', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           allFiles: allFilesStateStub,
@@ -89,7 +89,7 @@ describe('AllFilesModalsComponent', () => {
       expect(store.getState().editFileModal.isEditFileModalVisible).toBeFalsy();
     });
 
-    test('should edit the first file on clicking upload', async () => {
+    test('should edit the first file on clicking upload', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           allFiles: allFilesStateStub,
@@ -142,7 +142,7 @@ describe('AllFilesModalsComponent', () => {
   });
 
   describe('DeleteFileModalComponent', () => {
-    test('should hide the modal on clicking cancel', async () => {
+    test('should hide the modal on clicking cancel', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           allFiles: allFilesStateStub,
@@ -161,7 +161,7 @@ describe('AllFilesModalsComponent', () => {
       ).toBeFalsy();
     });
 
-    test('should delete the first file', async () => {
+    test('should delete the first file', () => {
       const { store } = renderWithProviders(<AllFilesModalsComponent />, {
         preloadedState: {
           allFiles: allFilesStateStub,
@@ -171,14 +171,14 @@ describe('AllFilesModalsComponent', () => {
       const deleteButton = screen.getByRole('button', {
         name: 'Delete',
       });
-      expect(store.getState().allFiles.allFiles.length).toEqual(2);
-      expect(store.getState().allFiles.cachedAllFiles.length).toEqual(2);
+      expect(store.getState().allFiles.allFiles).toHaveLength(2);
+      expect(store.getState().allFiles.cachedAllFiles).toHaveLength(2);
       expect(
         store.getState().deleteFileModal.isDeleteFileModalVisible,
       ).toBeTruthy();
       fireEvent.click(deleteButton);
-      expect(store.getState().allFiles.allFiles.length).toEqual(1);
-      expect(store.getState().allFiles.cachedAllFiles.length).toEqual(1);
+      expect(store.getState().allFiles.allFiles).toHaveLength(1);
+      expect(store.getState().allFiles.cachedAllFiles).toHaveLength(1);
       expect(
         store.getState().deleteFileModal.isDeleteFileModalVisible,
       ).toBeFalsy();

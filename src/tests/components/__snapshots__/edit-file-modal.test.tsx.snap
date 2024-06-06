@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllFilesHeaderComponent should render 1`] = `
+<div>
+  <div
+    class="body-container h-100"
+  />
+</div>
+`;
+
+exports[`EditFileModalComponent should render 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
+
+exports[`EditFileModalComponent should update fields on text field change 1`] = `
+<div
+  aria-hidden="true"
+/>
+`;
