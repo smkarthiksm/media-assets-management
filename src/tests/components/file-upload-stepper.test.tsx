@@ -19,6 +19,7 @@ describe('FileUploadStepperComponent', () => {
     // mock DOM createElement API to mock eventListener
     global.URL.createObjectURL = jest.fn(() => 'random_id');
     const mockAudioElement = document.createElement('audio');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mockAudioElement.addEventListener = (type: string, handler: any) =>
       handler();
 

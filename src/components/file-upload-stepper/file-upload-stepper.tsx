@@ -19,7 +19,6 @@ import {
   updateFileInputFields,
 } from '../../redux-utilities/slices/file-upload-stepper-slice';
 import { AppDispatch } from '../../redux-utilities/types';
-import { ChangeEvent } from 'react';
 import AudioFileIcon from '@mui/icons-material/AudioFile';
 import VideoFileIcon from '@mui/icons-material/VideoFile';
 import {
