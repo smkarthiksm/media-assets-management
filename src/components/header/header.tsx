@@ -27,6 +27,7 @@ export default function HeaderComponent() {
   }
 
   function handleLogout() {
+    handleClose();
     removeJwtToken();
     dispatch({ type: 'logout' });
     navigate('/');
