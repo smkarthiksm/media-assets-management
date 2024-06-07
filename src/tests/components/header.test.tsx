@@ -3,7 +3,6 @@ import { renderWithProviders } from '../test-utility';
 import HeaderComponent from '../../components/header/header';
 import { fireEvent, screen } from '@testing-library/react';
 import { getJwtToken, setJwtToken } from '../../utilities/utility';
-import userEvent from '@testing-library/user-event';
 
 describe('HeaderComponent', () => {
   test('should render', () => {
@@ -19,7 +18,7 @@ describe('HeaderComponent', () => {
     const menuItem = screen.getByRole('menuitem', { name: 'Logout' });
     expect(menuItem).toBeInTheDocument();
   });
-  
+
   test('should logout when option is clicked', () => {
     setJwtToken('test');
     renderWithProviders(<HeaderComponent />);

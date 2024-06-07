@@ -1,9 +1,9 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { LoginState } from '../../models/login';
 import { getSession } from '../../api';
 import { RootState } from '../types';
+import { AuthState } from '../../models/auth';
 
-const initialState: LoginState = {
+const initialState: AuthState = {
   email: '',
   password: '',
   isLoaderVisible: false,
@@ -40,17 +40,15 @@ const authSlice = createSlice({
 // Thunks
 export const login = createAsyncThunk(
   'auth/login',
-  async ({
+  ({
     email,
     password,
   }: {
     email: string;
     password: string;
-  }): Promise<boolean> => {
-    return getSession(email, password);
-  },
+  }): Promise<boolean> => getSession(email, password),
 );
 
-export const authStateSelector = (state: RootState) => state.login;
+export const authStateSelector = (state: RootState) => state.auth;
 export const { updateFields } = authSlice.actions;
 export default authSlice.reducer;

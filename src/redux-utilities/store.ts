@@ -13,7 +13,7 @@ import fileUploadStepperReducer from './slices/file-upload-stepper-slice';
 import { RootState } from './types';
 
 export const combinedReducers = combineReducers({
-  login: authReducer,
+  auth: authReducer,
   loader: loaderReducer,
   allFiles: allFilesReducer,
   editFileModal: editFileModalReducer,

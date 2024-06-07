@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditFileModalComponent should render 1`] = `
+exports[`ModalComponent should render 1`] = `
 <div
   aria-hidden="true"
 />

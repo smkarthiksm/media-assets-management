@@ -20,8 +20,9 @@ export default function ModalComponent(props: {
   size: Breakpoint;
 }) {
   const handleClose: DialogProps['onClose'] = (event, reason) => {
-    if (reason && reason === 'backdropClick') return;
-    props.handleClose();
+    if (reason !== 'backdropClick') {
+      props.handleClose();
+    }
   };
 
   return (

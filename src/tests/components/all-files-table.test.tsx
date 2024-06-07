@@ -4,7 +4,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import AllFilesTableComponent from '../../components/all-files-table/all-files-table';
 import { allFilesStateStub } from '../stubs/all-files-state.stub';
 
-describe('AllFilesModalsComponent', () => {
+describe('AllFilesTableComponent', () => {
   test('should render', () => {
     const { container } = renderWithProviders(<AllFilesTableComponent />);
     expect(container).toMatchSnapshot();

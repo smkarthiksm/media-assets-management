@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AllFilesModalsComponent should render 1`] = `
+exports[`AllFilesTableComponent should render 1`] = `
 <div>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
@@ -76,5 +76,3 @@ exports[`AllFilesModalsComponent should render 1`] = `
   </div>
 </div>
 `;
-
-exports[`AllFilesModalsComponent should render all modals 1`] = `<div />`;

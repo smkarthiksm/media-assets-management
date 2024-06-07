@@ -68,14 +68,12 @@ const AllFilesSlice = createSlice({
 // // Thunks
 const fetchAllFilesAsync = createAsyncThunk(
   'home/allFiles',
-  async (): Promise<AllFile[]> => {
-    return getAllFiles();
-  },
+  (): Promise<AllFile[]> => getAllFiles(),
 );
 
 export const searchByInput =
   (searchValue: string) =>
-  async (dispatch: AppDispatch, getState: () => RootState) => {
+  (dispatch: AppDispatch, getState: () => RootState) => {
     dispatch(updateSearchValue(searchValue));
     const { cachedAllFiles } = allFilesStateSelector(getState());
     if (searchValue) {
@@ -107,7 +105,7 @@ export const {
   updateSearchValue,
   updateFile,
   deleteFile,
-  updateAllFiles
+  updateAllFiles,
 } = AllFilesSlice.actions;
 export const allFilesStateSelector = (state: RootState) => state.allFiles;
 export default AllFilesSlice.reducer;

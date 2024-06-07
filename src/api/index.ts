@@ -13,6 +13,7 @@ export const getSession = (e: string, p: string): Promise<boolean> => {
     ({ email, password }) => email === e && password === p,
   );
 
+  console.log(isUserExist);
   return new Promise((res, rej) => {
     setTimeout(() => {
       if (isUserExist) {

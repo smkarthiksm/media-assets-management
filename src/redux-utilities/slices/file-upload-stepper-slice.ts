@@ -18,13 +18,6 @@ const fileUploadStepperSlice = createSlice({
     addFiles: (state, action: PayloadAction<Partial<AudioFile>[]>) => {
       state.files = [...state.files, ...action.payload];
     },
-    updateDurationInFormat: (
-      state,
-      action: PayloadAction<{ index: number; duration: string }>,
-    ) => {
-      const { duration, index } = action.payload;
-      state.files[index].duration = duration;
-    },
     updateFileInputFields: (
       state,
       action: PayloadAction<{ index: number; prop: string; value: string }>,
@@ -46,7 +39,6 @@ export const fileUploadStepperStateSelector = (state: RootState) =>
 export const {
   setActiveStep,
   addFiles,
-  updateDurationInFormat,
   updateFileInputFields,
   removeFile,
   resetFileUploadStepper,

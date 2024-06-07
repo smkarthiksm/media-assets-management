@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeComponent should render 1`] = `
+<div>
+  <div
+    class="home-container h-100"
+  >
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-11b3ww9-MuiPaper-root-MuiAppBar-root"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular d-flex justify-content-between css-hyum1k-MuiToolbar-root"
+      >
+        <div
+          class="logo-container"
+        >
+          <div
+            class="logo"
+          />
+          <h6
+            class="d-inline mx-1"
+          >
+            Media Assets Management
+          </h6>
+        </div>
+        <div
+          class="d-flex align-items-center justify-content-end link-container"
+        >
+          <div>
+            <a
+              class="text-white m-4"
+              href="/"
+            >
+              All
+            </a>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium profile-button css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="MuiAvatar-root MuiAvatar-circular css-1wlk0hk-MuiAvatar-root"
+            >
+              <img
+                alt="Simon Nixon"
+                class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                src="profile-image.png"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+    <div
+      class="body-container h-100"
+    />
+  </div>
+</div>
+`;

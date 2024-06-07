@@ -6,15 +6,15 @@ import {
   login,
   updateFields,
 } from '../../redux-utilities/slices/auth-slice';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { emailValidation } from '../../utilities/validators';
 import { AppDispatch } from '../../redux-utilities/types';
 import { useNavigate } from 'react-router-dom';
 import LogoComponent from '../logo/logo';
 
 export default function LoginComponent() {
-  const [loginError, setLoginError] = useState(false);
-  const { email, password, isLoaderVisible } = useSelector(authStateSelector);
+  const { email, password, isLoaderVisible, loginError } =
+    useSelector(authStateSelector);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
@@ -36,8 +36,6 @@ export default function LoginComponent() {
     const { payload } = await dispatch(login({ email, password }));
     if (payload) {
       navigate('/home');
-    } else {
-      setLoginError(true);
     }
   }
 
