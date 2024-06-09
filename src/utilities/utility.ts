@@ -1,16 +1,11 @@
-import { AudioFile } from "../stubs/files";
+import { AudioFile } from '../stubs/files';
 
-export const setJwtToken = (token: string) => {
+export const setJwtToken = (token: string) =>
   localStorage.setItem('jwt', token);
-};
 
-export const getJwtToken = () => {
-  return localStorage.getItem('jwt');
-};
+export const getJwtToken = () => localStorage.getItem('jwt');
 
-export const removeJwtToken = () => {
-  return localStorage.removeItem('jwt');
-};
+export const removeJwtToken = () => localStorage.removeItem('jwt');
 
 export const sampleJwtToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlNpbW9uIE5peG9uIiwiaWF0IjoxNTE2MjM5MDIyfQ.uAtBWmANdDtnj-heMCuWroQYzW0L-GUajjEeXYkvE38';
@@ -38,11 +33,11 @@ export const areFilesInValid = (files: Partial<AudioFile>[]) =>
   !files.length ||
   files.some((file) => !file.album || !file.artist || !file.title);
 
-export const transformFiles = (files: File[]) => files.map((file) => ({
+export const transformFiles = (files: File[]) =>
+  files.map((file) => ({
     title: getTitleFromFile(file),
     album: '',
     artist: '',
     duration: '',
     fileType: getFileTypeFromFile(file),
   }));
-;

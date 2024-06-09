@@ -73,21 +73,23 @@ export default function AllFilesTableComponent() {
                 )}
               </TableCell>
               <TableCell>
-                <IconButton
-                  size="small"
-                  color="info"
-                  onClick={() => handleEditFile(file, index)}
-                >
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
-                <IconButton
-                  size="small"
-                  color="error"
-                  className="mx-4"
-                  onClick={() => handleDeleteFile(file, index)}
-                >
-                  <DeleteIcon fontSize="inherit" />
-                </IconButton>
+                <div className='d-flex'>
+                  <IconButton
+                    size="small"
+                    color="info"
+                    onClick={() => handleEditFile(file, index)}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                  <IconButton
+                    size="small"
+                    color="error"
+                    className="mx-2"
+                    onClick={() => handleDeleteFile(file, index)}
+                  >
+                    <DeleteIcon fontSize="inherit" />
+                  </IconButton>
+                </div>
               </TableCell>
             </TableRow>
           ))}

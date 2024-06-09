@@ -1,5 +1,5 @@
 import './logo.scss';
 
 export default function LogoComponent() {
-  return <div className="logo"></div>;
+  return <span className="logo"></span>;
 }

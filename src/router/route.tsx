@@ -1,11 +1,11 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 import LoginComponent from '../components/login/login';
 import HomeComponent from '../components/home/home';
 import PrivateRoute from './PrivateRoute';
 import { isAuthenticated } from '../utilities/utility';
 import AllFilesSectionComponent from '../components/all-files-section/all-files-section';
 
-export const router = createBrowserRouter([
+export const routesConfig: RouteObject[] = [
   {
     path: '/',
     element: (
@@ -37,6 +37,8 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to="/" replace />
-  }
-]);
+    element: <Navigate to="/" replace />,
+  },
+];
+
+export const router = createBrowserRouter(routesConfig);

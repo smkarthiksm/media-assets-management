@@ -12,8 +12,6 @@ export const getSession = (e: string, p: string): Promise<boolean> => {
   const isUserExist = loginCreds.some(
     ({ email, password }) => email === e && password === p,
   );
-
-  console.log(isUserExist);
   return new Promise((res, rej) => {
     setTimeout(() => {
       if (isUserExist) {

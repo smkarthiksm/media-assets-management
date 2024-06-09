@@ -28,6 +28,7 @@ export default function AllFilesHeaderComponent() {
             variant="outlined"
             className="input-field"
             value={searchValue}
+            fullWidth
             onChange={(e) => dispatch(searchByInput(e.target.value))}
           />
         </Grid>

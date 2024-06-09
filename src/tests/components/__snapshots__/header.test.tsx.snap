@@ -11,7 +11,7 @@ exports[`HeaderComponent should render 1`] = `
       <div
         class="logo-container"
       >
-        <div
+        <span
           class="logo"
         />
         <h6

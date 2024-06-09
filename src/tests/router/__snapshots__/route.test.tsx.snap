@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginComponent should render 1`] = `
+exports[`Router component Login Route should load login page 1`] = `
 <div>
   <div
     class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-sm-8 MuiGrid-grid-md-5 login-container css-1i4yeyn-MuiGrid-root"

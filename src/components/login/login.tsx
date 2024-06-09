@@ -1,4 +1,10 @@
-import { Button, CircularProgress, TextField, Typography } from '@mui/material';
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from '@mui/material';
 import './login.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -40,16 +46,37 @@ export default function LoginComponent() {
   }
 
   return (
-    <>
-      <div className="login-container">
-        <div className="logo-container">
+    <Grid
+      container
+      item
+      xs={10}
+      sm={8}
+      md={5}
+      margin={'auto'}
+      className="login-container"
+    >
+      <Grid
+        container
+        item
+        className="logo-container"
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Grid item>
           <LogoComponent />
+        </Grid>
+        <Grid item>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Media Assets Management
           </Typography>
+        </Grid>
+        <Grid item className='seperator-container'>
           <div className="seperator mt-2"></div>
-        </div>
-        <div>
+        </Grid>
+      </Grid>
+      <Grid container item>
+        <Grid item xs={12}>
           <TextField
             className="input-field mt-4"
             fullWidth
@@ -59,6 +86,8 @@ export default function LoginComponent() {
             value={email}
             onChange={onChangeHandler}
           />
+        </Grid>
+        <Grid item xs={12}>
           <TextField
             className="input-field mt-3"
             fullWidth
@@ -69,8 +98,8 @@ export default function LoginComponent() {
             value={password}
             onChange={onChangeHandler}
           />
-        </div>
-        <div>
+        </Grid>
+        <Grid item xs={12}>
           <Button
             className="mt-3"
             variant="contained"
@@ -84,18 +113,20 @@ export default function LoginComponent() {
               'Login'
             )}
           </Button>
-        </div>
+        </Grid>
         {loginError && (
-          <Typography
-            className="mt-2 text-center"
-            variant="subtitle1"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Account not found!
-          </Typography>
+          <Grid item xs={12}>
+            <Typography
+              className="mt-2 text-center"
+              variant="subtitle1"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Account not found!
+            </Typography>
+          </Grid>
         )}
-      </div>
-    </>
+      </Grid>
+    </Grid>
   );
 }

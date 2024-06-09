@@ -2,7 +2,7 @@
 
 exports[`LogoComponent should render 1`] = `
 <div>
-  <div
+  <span
     class="logo"
   />
 </div>
