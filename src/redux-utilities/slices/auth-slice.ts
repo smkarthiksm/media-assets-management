@@ -14,10 +14,7 @@ const authSlice = createSlice({
   initialState,
   name: 'auth',
   reducers: {
-    updateFields: (
-      state,
-      action: PayloadAction<{ prop: string; value: string }>,
-    ) => {
+    updateFields: (state, action: PayloadAction<{ [key: string]: string }>) => {
       const { prop, value } = action.payload;
       state[prop as 'email' | 'password'] = value;
     },
