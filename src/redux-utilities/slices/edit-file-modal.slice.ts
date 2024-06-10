@@ -22,7 +22,7 @@ const editFileModalSlice = createSlice({
     },
     updateEditFileModalFields: (
       state,
-      action: PayloadAction<{ [key: string]: string | undefined }[]>,
+      action: PayloadAction<{ prop: string; value?: string }[]>,
     ) => {
       action.payload.forEach((element) => {
         const { prop, value } = element;
