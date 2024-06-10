@@ -6,7 +6,9 @@ import { loaderStateSelector } from '../../redux-utilities/slices/loader-slice';
 import { Grid } from '@mui/material';
 import AllFilesTableComponent from '../all-files-table/all-files-table';
 import AllFilesHeaderComponent from '../all-files-header/all-files-header';
-import AllFilesModalsComponent from '../all-files-modals/all-files-modals';
+import UploadFileModalComponent from '../upload-file-modal/upload-file-modal';
+import EditFileModalComponent from '../edit-file-modal/edit-file-modal';
+import DeleteFileModalComponent from '../delete-file-modal/delete-file-modal';
 
 export default function AllSectionComponent() {
   const { isLoaderVisible } = useSelector(loaderStateSelector);
@@ -24,7 +26,9 @@ export default function AllSectionComponent() {
           <Grid container item>
             <AllFilesTableComponent />
           </Grid>
-          <AllFilesModalsComponent />
+          <UploadFileModalComponent />
+          <EditFileModalComponent />
+          <DeleteFileModalComponent />
         </Grid>
       )}
     </>

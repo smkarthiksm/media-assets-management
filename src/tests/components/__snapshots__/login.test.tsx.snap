@@ -24,6 +24,13 @@ exports[`LoginComponent should render 1`] = `
           Media Assets Management
         </div>
       </div>
+      <div
+        class="MuiGrid-root MuiGrid-item seperator-container css-13i4rnv-MuiGrid-root"
+      >
+        <div
+          class="seperator mt-2"
+        />
+      </div>
     </div>
     <div
       class="MuiGrid-root MuiGrid-container MuiGrid-item css-1f064cs-MuiGrid-root"

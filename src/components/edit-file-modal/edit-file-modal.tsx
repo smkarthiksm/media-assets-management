@@ -3,18 +3,28 @@ import ModalComponent from '../modal/modal';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editFileModalStateSelector,
+  setEditFileModalVisibility,
   updateEditFileModalFields,
 } from '../../redux-utilities/slices/edit-file-modal.slice';
 import { AppDispatch } from '../../redux-utilities/types';
 import { ChangeEvent } from 'react';
+import { updateFile } from '../../redux-utilities/slices/all-files-slice';
 
-export default function EditFileModalComponent(props: {
-  open: boolean;
-  handleSave: () => void;
-  handleCancel: () => void;
-}) {
-  const { album, artist, title } = useSelector(editFileModalStateSelector);
+export default function EditFileModalComponent() {
+  const {
+    isEditFileModalVisible,
+    index: editIndex,
+    album,
+    artist,
+    title,
+  } = useSelector(editFileModalStateSelector);
+
   const dispatch = useDispatch<AppDispatch>();
+
+  function handleEditFileSave() {
+    dispatch(updateFile({ album, artist, index: editIndex, title }));
+    dispatch(setEditFileModalVisibility(false));
+  }
 
   function handleFieldUpdate(e: ChangeEvent<HTMLInputElement>) {
     dispatch(
@@ -23,17 +33,19 @@ export default function EditFileModalComponent(props: {
       ]),
     );
   }
+
   function disableSaveButton() {
     return !album || !artist || !title;
   }
   return (
     <ModalComponent
+      open={isEditFileModalVisible}
       modalTitle="Edit file metadata"
       closeButtonTitle="Save"
       disableCloseButton={disableSaveButton()}
-      handleClose={props.handleSave}
+      handleClose={handleEditFileSave}
+      handleCancel={() => dispatch(setEditFileModalVisibility(false))}
       size="md"
-      {...props}
     >
       <Grid container spacing={4}>
         <Grid item xs={12} marginTop={1}>
