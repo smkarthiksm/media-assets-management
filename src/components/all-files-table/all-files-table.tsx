@@ -32,9 +32,13 @@ export default function AllFilesTableComponent() {
   const dispatch = useDispatch<AppDispatch>();
 
   function handleEditFile(file: AllFile, index: number) {
-    dispatch(updateEditFileModalFields({ prop: 'title', value: file.title }));
-    dispatch(updateEditFileModalFields({ prop: 'album', value: file.album }));
-    dispatch(updateEditFileModalFields({ prop: 'artist', value: file.artist }));
+    dispatch(
+      updateEditFileModalFields([
+        { prop: 'title', value: file.title },
+        { prop: 'album', value: file.album },
+        { prop: 'artist', value: file.artist },
+      ]),
+    );
     dispatch(setEditFileModalIndex(index));
     dispatch(setEditFileModalVisibility(true));
   }
@@ -73,7 +77,7 @@ export default function AllFilesTableComponent() {
                 )}
               </TableCell>
               <TableCell>
-                <div className='d-flex'>
+                <div className="d-flex">
                   <IconButton
                     size="small"
                     color="info"

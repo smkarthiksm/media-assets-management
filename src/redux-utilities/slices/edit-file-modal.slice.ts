@@ -22,15 +22,18 @@ const editFileModalSlice = createSlice({
     },
     updateEditFileModalFields: (
       state,
-      action: PayloadAction<{ prop: string; value?: string }>,
+      action: PayloadAction<{ [key: string]: string | undefined }[]>,
     ) => {
-      const { prop, value } = action.payload;
-      state[prop as 'title' | 'album' | 'artist'] = value;
+      action.payload.forEach((element) => {
+        const { prop, value } = element;
+        state[prop as 'title' | 'album' | 'artist'] = value;
+      });
     },
   },
 });
 
-export const editFileModalStateSelector = (state: RootState) => state.editFileModal;
+export const editFileModalStateSelector = (state: RootState) =>
+  state.editFileModal;
 export const {
   setEditFileModalVisibility,
   setEditFileModalIndex,

@@ -18,7 +18,9 @@ export default function EditFileModalComponent(props: {
 
   function handleFieldUpdate(e: ChangeEvent<HTMLInputElement>) {
     dispatch(
-      updateEditFileModalFields({ prop: e.target.name, value: e.target.value }),
+      updateEditFileModalFields([
+        { prop: e.target.name, value: e.target.value },
+      ]),
     );
   }
   function disableSaveButton() {
@@ -30,7 +32,7 @@ export default function EditFileModalComponent(props: {
       closeButtonTitle="Save"
       disableCloseButton={disableSaveButton()}
       handleClose={props.handleSave}
-      size='md'
+      size="md"
       {...props}
     >
       <Grid container spacing={4}>
