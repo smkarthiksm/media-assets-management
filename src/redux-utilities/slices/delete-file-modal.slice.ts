@@ -5,6 +5,7 @@ import { DeleteFileModalState } from '../../models/delete-file-modal';
 const initialState: DeleteFileModalState = {
   index: -1,
   isDeleteFileModalVisible: false,
+  fileName: '',
 };
 
 const deleteFileModalSlice = createSlice({
@@ -14,14 +15,18 @@ const deleteFileModalSlice = createSlice({
     setDeleteFileModalVisibility: (state, action: PayloadAction<boolean>) => {
       state.isDeleteFileModalVisible = action.payload;
     },
-    setDeleteFileModalIndex: (state, action: PayloadAction<number>) => {
-      state.index = action.payload;
+    setDeleteFileModalFileDetails: (
+      state,
+      action: PayloadAction<{ fileName?: string; index: number }>,
+    ) => {
+      state.index = action.payload.index;
+      state.fileName = action.payload.fileName;
     },
   },
 });
 
 export const deleteFileModalStateSelector = (state: RootState) =>
   state.deleteFileModal;
-export const { setDeleteFileModalIndex, setDeleteFileModalVisibility } =
+export const { setDeleteFileModalFileDetails, setDeleteFileModalVisibility } =
   deleteFileModalSlice.actions;
 export default deleteFileModalSlice.reducer;

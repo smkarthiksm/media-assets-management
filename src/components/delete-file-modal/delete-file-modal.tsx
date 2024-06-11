@@ -12,10 +12,11 @@ import {
 } from '../../redux-utilities/slices/delete-file-modal.slice';
 
 export default function DeleteFileModalComponent() {
-  const { index: deleteIndex, isDeleteFileModalVisible } = useSelector(
-    deleteFileModalStateSelector,
-  );
-  const { allFiles } = useSelector(allFilesStateSelector);
+  const {
+    index: deleteIndex,
+    isDeleteFileModalVisible,
+    fileName,
+  } = useSelector(deleteFileModalStateSelector);
   const dispatch = useDispatch<AppDispatch>();
 
   function handleDelete() {
@@ -27,7 +28,6 @@ export default function DeleteFileModalComponent() {
     dispatch(setDeleteFileModalVisibility(false));
   }
 
-  const fileName = (allFiles[deleteIndex] && allFiles[deleteIndex].title) || '';
   return (
     <ModalComponent
       open={isDeleteFileModalVisible}

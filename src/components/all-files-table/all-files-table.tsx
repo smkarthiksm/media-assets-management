@@ -23,7 +23,7 @@ import {
   updateEditFileModalFields,
 } from '../../redux-utilities/slices/edit-file-modal.slice';
 import {
-  setDeleteFileModalIndex,
+  setDeleteFileModalFileDetails,
   setDeleteFileModalVisibility,
 } from '../../redux-utilities/slices/delete-file-modal.slice';
 
@@ -44,7 +44,7 @@ export default function AllFilesTableComponent() {
     dispatch(setEditFileModalVisibility(true));
   }
   function handleDeleteFile(file: AllFile, index: number) {
-    dispatch(setDeleteFileModalIndex(index));
+    dispatch(setDeleteFileModalFileDetails({ index, fileName: file.title }));
     dispatch(setDeleteFileModalVisibility(true));
   }
 
