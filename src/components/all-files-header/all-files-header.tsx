@@ -4,7 +4,6 @@ import {
   allFilesStateSelector,
   searchByInput,
 } from '../../redux-utilities/slices/all-files-slice';
-import { resetFileUploadStepper } from '../../redux-utilities/slices/file-upload-stepper-slice';
 import { setUploadFileModalVisibility } from '../../redux-utilities/slices/upload-file-modal.slice';
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,10 +35,7 @@ export default function AllFilesHeaderComponent() {
           <Button
             variant="contained"
             endIcon={<AddIcon />}
-            onClick={() => {
-              dispatch(resetFileUploadStepper());
-              dispatch(setUploadFileModalVisibility(true));
-            }}
+            onClick={() => dispatch(setUploadFileModalVisibility(true))}
           >
             Upload
           </Button>

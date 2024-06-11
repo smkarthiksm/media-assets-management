@@ -1,7 +1,10 @@
 import ModalComponent from '../modal/modal';
 import FileUploadStepperComponent from '../file-upload-stepper/file-upload-stepper';
 import { useDispatch, useSelector } from 'react-redux';
-import { fileUploadStepperStateSelector } from '../../redux-utilities/slices/file-upload-stepper-slice';
+import {
+  fileUploadStepperStateSelector,
+  resetFileUploadStepper,
+} from '../../redux-utilities/slices/file-upload-stepper-slice';
 import { areFilesInValid } from '../../utilities/utility';
 import { AppDispatch } from '../../redux-utilities/types';
 import { updateAllFiles } from '../../redux-utilities/slices/all-files-slice';
@@ -20,9 +23,14 @@ export default function UploadFileModalComponent() {
 
   const dispatch = useDispatch<AppDispatch>();
 
+  function hideUploadFileModal() {
+    dispatch(resetFileUploadStepper());
+    dispatch(setUploadFileModalVisibility(false));
+  }
+
   function handleFileUpload() {
     dispatch(updateAllFiles(files));
-    dispatch(setUploadFileModalVisibility(false));
+    hideUploadFileModal();
   }
 
   return (
@@ -31,7 +39,7 @@ export default function UploadFileModalComponent() {
       modalTitle="Upload files"
       closeButtonTitle="Upload"
       handleClose={handleFileUpload}
-      handleCancel={() => dispatch(setUploadFileModalVisibility(false))}
+      handleCancel={hideUploadFileModal}
       size="md"
       disableCloseButton={isInvalid}
     >
