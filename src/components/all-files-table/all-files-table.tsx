@@ -1,4 +1,5 @@
 import {
+  Grid,
   IconButton,
   Paper,
   Table,
@@ -48,64 +49,66 @@ export default function AllFilesTableComponent() {
   }
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>#</TableCell>
-            <TableCell>Title</TableCell>
-            <TableCell>Album</TableCell>
-            <TableCell>Artist</TableCell>
-            <TableCell align="center">Duration</TableCell>
-            <TableCell>File type</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {allFiles.map((file, index) => (
-            <TableRow key={index + 1}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{file.title}</TableCell>
-              <TableCell>{file.album || 'N/A'}</TableCell>
-              <TableCell>{file.artist}</TableCell>
-              <TableCell align="center">{file.duration}</TableCell>
-              <TableCell>
-                {file.fileType === 'audio' ? (
-                  <AudioFileIcon color="primary" />
-                ) : (
-                  <VideoFileIcon color="secondary" />
-                )}
-              </TableCell>
-              <TableCell>
-                <div className="d-flex">
-                  <IconButton
-                    size="small"
-                    color="info"
-                    onClick={() => handleEditFile(file, index)}
-                  >
-                    <EditIcon fontSize="inherit" />
-                  </IconButton>
-                  <IconButton
-                    size="small"
-                    color="error"
-                    className="mx-2"
-                    onClick={() => handleDeleteFile(file, index)}
-                  >
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-          {!allFiles.length ? (
+    <Grid container item>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
             <TableRow>
-              <TableCell colSpan={7} align="center">
-                No records found
-              </TableCell>
+              <TableCell>#</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Album</TableCell>
+              <TableCell>Artist</TableCell>
+              <TableCell align="center">Duration</TableCell>
+              <TableCell>File type</TableCell>
+              <TableCell>Action</TableCell>
             </TableRow>
-          ) : null}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {allFiles.map((file, index) => (
+              <TableRow key={index + 1}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{file.title}</TableCell>
+                <TableCell>{file.album || 'N/A'}</TableCell>
+                <TableCell>{file.artist}</TableCell>
+                <TableCell align="center">{file.duration}</TableCell>
+                <TableCell>
+                  {file.fileType === 'audio' ? (
+                    <AudioFileIcon color="primary" />
+                  ) : (
+                    <VideoFileIcon color="secondary" />
+                  )}
+                </TableCell>
+                <TableCell>
+                  <div className="d-flex">
+                    <IconButton
+                      size="small"
+                      color="info"
+                      onClick={() => handleEditFile(file, index)}
+                    >
+                      <EditIcon fontSize="inherit" />
+                    </IconButton>
+                    <IconButton
+                      size="small"
+                      color="error"
+                      className="mx-2"
+                      onClick={() => handleDeleteFile(file, index)}
+                    >
+                      <DeleteIcon fontSize="inherit" />
+                    </IconButton>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+            {!allFiles.length ? (
+              <TableRow>
+                <TableCell colSpan={7} align="center">
+                  No records found
+                </TableCell>
+              </TableRow>
+            ) : null}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Grid>
   );
 }

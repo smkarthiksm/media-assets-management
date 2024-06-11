@@ -23,9 +23,7 @@ export default function AllSectionComponent() {
       {isLoaderVisible ? null : (
         <Grid container padding={4} rowGap={2}>
           <AllFilesHeaderComponent />
-          <Grid container item>
-            <AllFilesTableComponent />
-          </Grid>
+          <AllFilesTableComponent />
           <UploadFileModalComponent />
           <EditFileModalComponent />
           <DeleteFileModalComponent />
