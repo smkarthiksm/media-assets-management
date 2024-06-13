@@ -26,7 +26,8 @@ import {
   getFileTypeFromFile,
   transformFiles,
 } from '../../utilities/utility';
-import { isFunction, isObject } from 'lodash';
+import isFunction from 'lodash/isFunction';
+import isObject from 'lodash/isObject';
 
 export default function FileUploadStepperComponent() {
   const { activeStep, files } = useSelector(fileUploadStepperStateSelector);
