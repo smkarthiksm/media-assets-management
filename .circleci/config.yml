@@ -1,49 +1,18 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.0.2
-
+  node: circleci/node@5.2.0
 jobs:
-  lint:
-    executor: node/default
+  install-node-example:
+    docker:
+      - image: cimg/base:stable
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Check linting
-          command: npm run lint
-  test:
-    executor: node/default
-    steps:
-      - run:
-          name: Run tests
-          command: npm run test
-  build:
-    executor: node/default
-    steps:
-      - run:
-          name: Build app
-          command: npm run build
-
-  deploy:
-    executor: node/default
-    steps:
-      - run:
-          name: Deploy app
-          command: echo 'App is deployed'
-
+      - node/install:
+          install-yarn: true
+          node-version: '16.13'
+      - run: node --version
 workflows:
-  Build main branch:
+  test_my_app:
     jobs:
-      - lint
-      - test
-      - build
-      - deploy:
-          requires:
-            - lint
-            - test
-            - build
-          filters:
-            branches:
-              only: main # only deploy when on main
+      - install-node-example
