@@ -11,11 +11,11 @@ jobs:
       - node/install:
           node-version: '16.13'
       - run: 
-        name: Check node version
-        command: node --version
+          name: Check node version
+          command: node --version
        - run: 
-        name: Check npm version
-        command: npm --version
+          name: Check npm version
+          command: npm --version
 workflows:
   test_my_app:
     jobs:
