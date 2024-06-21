@@ -10,12 +10,7 @@ jobs:
       - checkout
       - node/install:
           node-version: '16.13'
-      - run: 
-          name: Check node version
-          command: node --version
-       - run: 
-          name: Check npm version
-          command: npm --version
+      - run: node --version
 workflows:
   test_my_app:
     jobs:
