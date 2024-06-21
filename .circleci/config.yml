@@ -10,7 +10,9 @@ jobs:
       - checkout
       - node/install:
           node-version: '16.13'
-      - run: node --version
+      - run:
+          name: Check linting
+          command: npm run lint
 workflows:
   test_my_app:
     jobs:
