@@ -9,9 +9,13 @@ jobs:
     steps:
       - checkout
       - node/install:
-          install-yarn: true
           node-version: '16.13'
-      - run: node --version
+      - run: 
+        name: Check node version
+        command: node --version
+       - run: 
+        name: Check npm version
+        command: npm --version
 workflows:
   test_my_app:
     jobs:
