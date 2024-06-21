@@ -16,18 +16,12 @@ jobs:
   test:
     executor: node/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: Run tests
           command: npm run test
   build:
     executor: node/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: Build app
           command: npm run build
@@ -35,9 +29,6 @@ jobs:
   deploy:
     executor: node/default
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: Deploy app
           command: echo 'App is deployed'
