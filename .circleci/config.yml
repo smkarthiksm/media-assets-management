@@ -4,6 +4,15 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
+  lint:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Check linting
+          command: npm run lint
   test:
     executor: node/default
     steps:
@@ -34,12 +43,14 @@ jobs:
           command: echo 'App is deployed'
 
 workflows:
-  testing_workflow: # this can be any name you choose
+  Build main branch:
     jobs:
+      - lint
       - test
       - build
       - deploy:
           requires:
+            - lint
             - test
             - build
           filters:

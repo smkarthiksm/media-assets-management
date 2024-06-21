@@ -2,10 +2,7 @@ import { Typography } from '@mui/material';
 import ModalComponent from '../modal/modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux-utilities/types';
-import {
-  allFilesStateSelector,
-  deleteFile,
-} from '../../redux-utilities/slices/all-files-slice';
+import { deleteFile } from '../../redux-utilities/slices/all-files-slice';
 import {
   deleteFileModalStateSelector,
   setDeleteFileModalVisibility,
