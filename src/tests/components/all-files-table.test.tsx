@@ -57,6 +57,7 @@ describe('AllFilesTableComponent', () => {
     const deleteButton = screen.getAllByTestId('DeleteIcon')[0];
     fireEvent.click(deleteButton);
     expect(store.getState().deleteFileModal).toEqual({
+      fileName: 'testTitle1',
       index: 0,
       isDeleteFileModalVisible: true,
     });
