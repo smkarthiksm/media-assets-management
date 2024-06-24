@@ -1,19 +1,72 @@
 version: 2.1
-
 orbs:
   node: circleci/node@5.2.0
 jobs:
-  install-node-example:
-    docker:
-      - image: cimg/base:stable
+  #Checkout code and install dependencies if changed and add it to workspace to be reused in the other jobs
+  checkout_code_setup_npm_packages:
+    executor: node/default
     steps:
       - checkout
-      - node/install:
-          node-version: '16.13'
+      - restore_cache:
+          key: package-lock-checksum-{{ checksum "package-lock.json" }}
+      - run:
+          name: install dependencies
+          command: npm install
+      - save_cache:
+          key: package-lock-checksum-{{ checksum "package-lock.json" }}
+          paths: 
+            - node_modules   
+      - persist_to_workspace:
+            root: .
+            paths:
+                - .
+  lint:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Check linting
           command: npm run lint
+  test:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run tests
+          command: npm run test
+  build:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build app
+          command: npm run build
+  deploy:
+      executor: node/default
+      steps:
+      - run:
+          name: Deploy app
+          command: echo 'Deployeeeed'
+
 workflows:
-  test_my_app:
+  Build main branch:
     jobs:
-      - install-node-example
+      - checkout_code_setup_npm_packages
+      - lint:
+          requires:
+            - checkout_code_setup_npm_packages
+      - test:
+          requires:
+            - lint
+      - build:
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: main

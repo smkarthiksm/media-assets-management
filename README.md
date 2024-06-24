@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/LNzJ33aU8NBSwUfc44Fz2y/CUTasAwJm9UFj9eECgLcRC/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/LNzJ33aU8NBSwUfc44Fz2y/CUTasAwJm9UFj9eECgLcRC/tree/master)
+
 # Media Assests Management
 
 A simple react application to manage audio and video files
