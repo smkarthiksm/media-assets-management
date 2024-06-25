@@ -52,7 +52,7 @@ jobs:
           command: echo 'Deployeeeed'
 
 workflows:
-  $CIRCLE_BRANCH:
+  ${CIRCLE_BRANCH}:
     jobs:
       - checkout_code_setup_npm_packages
       - lint:
