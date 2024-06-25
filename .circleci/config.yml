@@ -48,6 +48,9 @@ jobs:
             root: build
             paths:
                 - .
+       - run:
+          name: List folders
+          command: ls
   deploy:
       executor: node/default
       steps:
