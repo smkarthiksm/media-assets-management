@@ -68,9 +68,9 @@ workflows:
           type: approval
           requires:
             - build
-      - deploy:
-          requires:
-            - hold
           filters:
             branches:
               only: master
+      - deploy:
+          requires:
+            - hold
