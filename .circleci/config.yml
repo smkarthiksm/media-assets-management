@@ -11,7 +11,7 @@ jobs:
           key: package-lock-checksum-{{ checksum "package-lock.json" }}
       - run:
           name: install dependencies
-          command: npm install && echo ${CIRCLE_BRANCH}
+          command: npm install
       - save_cache:
           key: package-lock-checksum-{{ checksum "package-lock.json" }}
           paths: 
