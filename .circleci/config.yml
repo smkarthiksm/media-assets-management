@@ -49,7 +49,7 @@ jobs:
       steps:
       - run:
           name: Deploy app
-          command: echo 'Deployeeeed'
+          command: npm run deploy
 
 workflows:
   Build branch:
