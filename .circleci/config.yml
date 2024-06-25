@@ -47,6 +47,8 @@ jobs:
   deploy:
       executor: node/default
       steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Deploy app
           command: npm run deploy
