@@ -52,7 +52,7 @@ jobs:
           command: echo 'Deployeeeed'
 
 workflows:
-  Build main branch:
+  Build branch:
     jobs:
       - checkout_code_setup_npm_packages
       - lint:
@@ -64,9 +64,13 @@ workflows:
       - build:
           requires:
             - test
-      - deploy:
+      - hold:
+          type: approval
           requires:
             - build
+      - deploy:
+          requires:
+            - hold
           filters:
             branches:
               only: master
