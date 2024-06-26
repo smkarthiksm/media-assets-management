@@ -13,6 +13,8 @@ npm install // Installs the dependencies
 npm run start // Starts the app
 ```
 
+### https://smkarthiksm.github.io/media-assets-management/
+
 #### Login creds
 
 ```bash
